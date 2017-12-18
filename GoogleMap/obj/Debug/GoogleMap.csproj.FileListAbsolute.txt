@@ -1,0 +1,162 @@
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\roslyn\csc.exe
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\roslyn\Microsoft.CodeAnalysis.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\roslyn\Microsoft.CSharp.Core.targets
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\roslyn\Microsoft.VisualBasic.Core.targets
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\roslyn\System.Collections.Immutable.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\roslyn\System.Reflection.Metadata.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\roslyn\vbc.exe
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\roslyn\VBCSCompiler.exe
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\roslyn\VBCSCompiler.exe.config
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\GoogleMap.dll.config
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\GoogleMap.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\GoogleMap.pdb
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Antlr3.Runtime.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\EntityFramework.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\EntityFramework.SqlServer.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.AspNet.Identity.Core.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.AspNet.Identity.Owin.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.Owin.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.Owin.Host.SystemWeb.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.Cookies.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.Facebook.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.Google.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.OAuth.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.Twitter.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.Web.Infrastructure.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Newtonsoft.Json.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Owin.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\System.Web.Helpers.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\System.Web.Mvc.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\System.Web.Optimization.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\System.Web.Razor.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\System.Web.WebPages.Deployment.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\System.Web.WebPages.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\System.Web.WebPages.Razor.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\WebGrease.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\System.Web.Helpers.xml
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\System.Web.Mvc.xml
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\System.Web.Optimization.xml
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\System.Web.Razor.xml
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\System.Web.WebPages.xml
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\System.Web.WebPages.Deployment.xml
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\System.Web.WebPages.Razor.xml
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Antlr3.Runtime.pdb
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Newtonsoft.Json.xml
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\EntityFramework.xml
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\EntityFramework.SqlServer.xml
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.AspNet.Identity.Core.xml
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.AspNet.Identity.Owin.xml
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.Owin.xml
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.Owin.Host.SystemWeb.xml
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.xml
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.Facebook.xml
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.Cookies.xml
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.OAuth.xml
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.Google.xml
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.Twitter.xml
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\obj\Debug\GoogleMap.csprojResolveAssemblyReference.cache
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\obj\Debug\GoogleMap.dll
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\obj\Debug\GoogleMap.pdb
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\obj\Debug\GoogleMap.Migrations.Mahmut1.resources
+c:\users\eren.gunes\documents\visual studio 2015\Projects\GoogleMap\GoogleMap\obj\Debug\GoogleMap.csproj.GenerateResource.Cache
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\csc.exe
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\vbc.exe
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\VBCSCompiler.exe
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\GoogleMap.dll.config
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\GoogleMap.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\GoogleMap.pdb
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Antlr3.Runtime.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\EntityFramework.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\EntityFramework.SqlServer.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.Owin.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Newtonsoft.Json.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Owin.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\System.Web.Helpers.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\System.Web.Mvc.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\System.Web.Optimization.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\System.Web.Razor.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\System.Web.WebPages.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\System.Web.WebPages.Razor.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\WebGrease.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\System.Web.Helpers.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\System.Web.Mvc.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\System.Web.Optimization.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\System.Web.Razor.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\System.Web.WebPages.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\System.Web.WebPages.Razor.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Antlr3.Runtime.pdb
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Newtonsoft.Json.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\EntityFramework.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\EntityFramework.SqlServer.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.Owin.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\obj\Debug\GoogleMap.Migrations.Mahmut1.resources
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\obj\Debug\GoogleMap.Migrations.Mahmut2.resources
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\obj\Debug\GoogleMap.Migrations.Mahmut3.resources
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\obj\Debug\GoogleMap.Migrations.name.resources
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\obj\Debug\GoogleMap.Migrations.WaypointChaned.resources
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\obj\Debug\GoogleMap.Migrations.eventHasStartAndEndString.resources
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\obj\Debug\GoogleMap.csproj.GenerateResource.Cache
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\obj\Debug\GoogleMap.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\obj\Debug\GoogleMap.pdb
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\obj\Debug\GoogleMap.csprojResolveAssemblyReference.cache
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\csc.exe.config
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\csc.rsp
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\csi.exe
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\csi.rsp
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\System.AppContext.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\System.Console.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\vbc.exe.config
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\bin\roslyn\vbc.rsp

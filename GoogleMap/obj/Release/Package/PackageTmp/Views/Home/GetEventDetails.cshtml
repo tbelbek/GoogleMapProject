@@ -1,0 +1,615 @@
+﻿@using WebGrease.Css.Ast.MediaQuery
+@model GoogleMap.Models.EventPlanViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 map-pad">
+                <div id="map" style="height: 750px; width:100%"></div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 map-pad-left">
+                <div class="right-clm-wrp">
+                    <p class="meter-lg">
+                        <i class="fa fa-bus fa-md"></i>
+                        <span id="distance">@Model.Distance</span><span class="metre"> metre</span>
+                        <input type="hidden" id="distanceHidden" />
+                    </p>
+                    <div class="funkyradio">
+                        <div>
+                            @Html.HiddenFor(modelItem => Model.Name, new { @id = "eventName" })
+                        </div>
+                        <h3 class="prv-header">Başlangıç Noktası</h3>
+                        <span class="adres"><span class="glyphicon glyphicon-map-marker"></span> @Model.StartPoint</span>
+
+                        <div>
+                            <input type="text" id="end" value="@String.Concat(Model.EndX, ", ", Model.EndY)" style="display: none;" />
+                        </div>
+                        <h3 class="prv-header">Bitiş Noktası</h3>
+                        <span class="adres"><span class="glyphicon glyphicon-map-marker"></span> @Model.FinishPoint</span>
+                    </div>
+                    <hr class="right-clm-hr">
+                    <div class="col-md-3">
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-primary pull-right" name="print" id="print" onclick="window.open('@Url.Action("PrintMap", "Home", new { @id=Model.Id })', '_blank')">
+                                <span class="glyphicon glyphicon-print"> </span>
+                                <b>Güzergahı Yazdır</b>
+                            </button>
+                        </div>
+                        <br /><br />
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-success pull-right" name="exportExcel" id="exportExcel" onclick="location.href='@Url.Action("ExportData", "Home",new {@id=Model.Id})'" style="margin-top: 10px;">
+                                <span class="glyphicon glyphicon-download-alt"> </span>
+                                <b>Excel Olarak İndir</b>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="waypoints">
+    <ul id="waterList"></ul>
+    <ul id="WCList"></ul>
+</div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxiKzM-pTcrZncz3E4am4tOtWTv2b4mV8&signed_in=true&callback=initMap"
+        async defer></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="~/Scripts/latlon-spherical.js"></script>
+<script src="~/Scripts/dms.js"></script>
+<script>
+    var map;
+    var directionsDefault = [];
+    var routeWaypts = [];
+    var waypts = [];
+    var markers = [];
+    var eventDetails = {};
+    var aPoint = {};
+    var bPoint = {};
+    var allStopProperties = [];
+    var originAndDestMarkers = [];
+    var dynamicStops = [];
+    var wayPoints = [];
+    var preEventResult = {};
+    var responseGlobal = {};
+    function initMap() {
+        var directionsService = new window.google.maps.DirectionsService;
+        var directionsDisplay = new window.google.maps.DirectionsRenderer({ draggable: false, suppressMarkers: true });
+        map = new window.google.maps.Map(document.getElementById('map'), {
+            center: { lat: 41.005811774870615, lng: 28.98914337158203 },
+            zoom: 12
+        });
+
+        // Create the DIV to hold the control and call the CenterControl() constructor
+        // passing in this DIV.
+        var centerControlDiv = document.createElement('div');
+        var centerControl = new CenterControl(centerControlDiv, map, $("#eventName").val());
+
+        centerControlDiv.index = 1;
+        map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+
+        directionsDisplay.setMap(map);
+
+        $.ajax({
+            method: "GET",
+            url: "/Home/EventGet/" + @Model.Id,
+            success: function(preEventResult) {
+                if (preEventResult != "") {
+                    preCalculateAndDisplayRoute(directionsService, directionsDisplay, map, preEventResult);
+                }
+            }
+        });
+
+        google.maps.event.addDomListener(window, "resize", function() {
+            var center = map.getCenter();
+            google.maps.event.trigger(map, "resize");
+            map.setCenter(center);
+        });
+
+        google.maps.event.addListener(map, 'click', function(event) {
+            var geocoder = new google.maps.Geocoder;
+            var latlng = { lat: parseFloat(event.latLng.lat()), lng: parseFloat(event.latLng.lng()) };
+
+            var radioButton = $('input[name="chooseLocation"]:checked').val();
+            if (radioButton === "start") {
+                document.getElementById('start').value = event.latLng.lat() + ", " + event.latLng.lng();
+                eventDetails.StartX = event.latLng.lat();
+                eventDetails.StartY = event.latLng.lng();
+                $('#empty')[0].checked = true;
+
+                geocoder.geocode({ 'location': latlng }, function(results, status) {
+                    if (status === google.maps.GeocoderStatus.OK) {
+                        if (results[0]) {
+                            $('#startName').val(results[0].formatted_address);
+                        }
+                    } else {
+                        window.alert('Geocoder failed due to: ' + status);
+                    }
+                });
+            } else if (radioButton === "end") {
+                document.getElementById('end').value = event.latLng.lat() + ", " + event.latLng.lng();
+                eventDetails.EndX = event.latLng.lat();
+                eventDetails.EndY = event.latLng.lng();
+                $('#empty')[0].checked = true;
+
+                geocoder.geocode({ 'location': latlng }, function(results, status) {
+                    if (status === google.maps.GeocoderStatus.OK) {
+                        if (results[0]) {
+                            $('#endName').val(results[0].formatted_address);
+                        }
+                    } else {
+                        window.alert('Geocoder failed due to: ' + status);
+                    }
+                });
+            }
+
+            eventDetails.Id = @Model.Id;
+            eventDetails.Name = $('#eventName').val();
+        });
+    }
+
+    function addRow() {
+        if ($("#StopTypeNames :selected").val() != "") {
+            var idAndType = $("#StopTypeNames :selected").val().split("|");
+            var name = $("#StopTypeNames :selected").text();
+
+            if (idAndType[1] == 2) {
+                $('#stops').append('<li><span class="tab" data-id="' + idAndType[0] + '" id="' + name + '">' + name + ' durağı <input type="radio" name="chooseMarkerLocation" id="addMarker" value="'+idAndType[0]+'"></span></li>');
+
+            } else {
+                $('#stops').append('<li><input type="text" data-id="' + idAndType[0] + '" id="' + name + '_distance"><span class="tab"> mt aralıklar ile ' + name + ' durağı </span></li>');
+
+                var stop = {};
+                stop.ID = idAndType[0];
+                stop.Name = name;
+
+                dynamicStops.push(stop);
+            }
+
+            $("#StopTypeNames :selected").hide();
+            $("#StopTypeNames").val("");
+        }
+    }
+
+    function setDirections(result, aPoint, bPoint) {
+        if (!(result.routes[0].overview_path[0].lat() == aPoint.lat && result.routes[0].overview_path[0].lng() == aPoint.lng)) {
+            document.getElementById('start').value = result.routes[0].overview_path[0].lat() + ", " + result.routes[0].overview_path[0].lng();
+        }
+
+        if (!(result.routes[0].overview_path[result.routes[0].overview_path.length - 1].lat() == bPoint.lat && result.routes[0].overview_path[result.routes[0].overview_path.length - 1].lng() == bPoint.lng)) {
+            document.getElementById('end').value = result.routes[0].overview_path[result.routes[0].overview_path.length - 1].lat() + ", " + result.routes[0].overview_path[result.routes[0].overview_path.length - 1].lng();
+        }
+
+        if ((result.routes[0].overview_path[0].lat() == aPoint.lat && result.routes[0].overview_path[0].lng() == aPoint.lng) && (result.routes[0].overview_path[result.routes[0].overview_path.length - 1].lat() == bPoint.lat && result.routes[0].overview_path[result.routes[0].overview_path.length - 1].lng() == bPoint.lng) && (result.request.waypoints.length > 0)) {
+            routeWaypts = [];
+            wayPoints = [];
+            if(result.request.waypoints.length > 8) {
+                alert("Maksimum 8 waypoint seçebilirsiniz.");
+            } else {
+                for (var kp = 0; kp < result.request.waypoints.length; kp++) {
+                    routeWaypts.push({
+                        location: result.request.waypoints[kp].location,
+                        stopover: true
+                    });
+
+                    var wayPoint = {};
+
+                    wayPoint.EventId = @Model.Id;
+                    wayPoint.WaypointX = result.request.waypoints[kp].location.lat() + '';
+                    wayPoint.WaypointY = result.request.waypoints[kp].location.lng() + '';
+
+                    wayPoints.push(wayPoint);
+                    if(wayPoints.length == 8) {
+                        $("#waypointsCount").text("Waypoint Sayısı: " + wayPoints.length + ". Maksimum Sayıya Ulaştınız!");
+                    } else {
+                        $("#waypointsCount").text("Waypoint Sayısı: " + wayPoints.length);
+                    }
+                }
+            }
+        }
+    }
+
+    function addStopFromJson(stop,map) {
+        var geocoder = new google.maps.Geocoder;
+        waypt = {};
+
+        var positionModel = new google.maps.LatLng(stop.CoordinateX, stop.CoordinateY);
+
+        var id = stop.StopId;
+
+        var marker = new google.maps.Marker({
+            position: positionModel,
+            title: stop.Name + "_" + id,
+            animation: google.maps.Animation.DROP,
+            draggable: false,
+            icon: stop.IconUrl
+        });
+
+        marker.setMap(map);
+
+        markers.push(marker);
+
+        marker.addListener('click', function(event) {
+            var contentString = "";
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+
+            var latlng = {lat: parseFloat(this.position.lat()), lng: parseFloat(this.position.lng())};
+
+            geocoder.geocode({'location': latlng}, function(results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    if (results[0]) {
+                        contentString = contentString + results[0].formatted_address;
+                    }
+
+                    infowindow = new google.maps.InfoWindow({
+                        content: contentString
+                    });
+
+                    infowindow.open(map, marker);
+                } else {
+                    window.alert('Geocoder failed due to: ' + status);
+                }
+            });
+        });
+    }
+
+    function addDynamicStop(lat, lng, stopDistance, map, dynamicStop) {
+        var geocoder = new google.maps.Geocoder;
+        var dynStop = dynamicStop;
+        var id = parseInt(dynamicStop.ID);
+        var stopProperty;
+
+        for (var sp = 0; sp < allStopProperties.length; sp++) {
+            if (allStopProperties[sp].Id === id) {
+                stopProperty = allStopProperties[sp];
+                break;
+            }
+        }
+
+        var positionModel = new google.maps.LatLng(lat, lng);
+        var marker = new google.maps.Marker({
+            position: positionModel,
+            animation: google.maps.Animation.DROP,
+            title:  stopProperty.Name + "_" + stopDistance,
+            draggable: false,
+            icon: stopProperty.IconUrl
+        });
+
+        marker.setMap(map);
+
+        markers.push(marker);
+        waypt = {};
+
+        marker.addListener('dragstart', function (event) {
+            waypt.milestone = this.title;
+        });
+
+        marker.addListener('dragend', function (event) {
+            removeStop(marker.position.lat(), marker.position.lng(), waypt.milestone);
+            addDynamicStop(this.position.lat(), this.position.lng(), waypt.milestone.split('_')[1], map, dynStop);
+
+            for (var l = 0, len = directionsDefault.length; l < len; l++) {
+                if (directionsDefault[l].milestone == waypt.milestone) {
+                    directionsDefault[l].latitude = waypt.latAfter;
+                    directionsDefault[l].longitude = waypt.lngAfter;
+                }
+            }
+        });
+
+        marker.addListener('click', function(event) {
+            var contentString = '<input type="button" value="Sil" onclick="removeStop('+ this.position.lat() + ',' + this.position.lng() + ',\'' + marker.title + '\');"/>';
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+
+            var latlng = {lat: parseFloat(this.position.lat()), lng: parseFloat(this.position.lng())};
+
+            geocoder.geocode({'location': latlng}, function(results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    if (results[0]) {
+                        contentString = contentString + "<br>" + results[0].formatted_address;
+                    }
+
+                    infowindow = new google.maps.InfoWindow({
+                        content: contentString
+                    });
+
+                    infowindow.open(map, marker);
+                } else {
+                    window.alert('Geocoder failed due to: ' + status);
+                }
+            });
+        });
+
+
+
+    }
+
+    function removeStop(lat, lng, title) {
+        var i = 0;
+
+        for (i = 0; i < markers.length; i++) {
+            if(markers[i].position.lat() == lat && markers[i].position.lng() == lng && markers[i].title == title) {
+                markers[i].setMap(null);
+                markers.splice(i, 1);
+                break;
+            }
+        }
+    }
+
+    // Rota Belirlemece
+    function calculateAndDisplayRoute(directionsService, directionsDisplay, map) {
+        directionsService.route({
+            origin: document.getElementById('start').value,
+            destination: document.getElementById('end').value,
+            waypoints: routeWaypts,
+            travelMode: google.maps.TravelMode.DRIVING
+        }, function (response, status) {
+            if (status === google.maps.DirectionsStatus.OK) {
+                removeMarkers();
+
+                var direction = response;
+                if (direction) {
+                    var lDistance = 0;
+                    var ld = 0;
+                    for (ld = 0; ld < response.routes[0].legs.length; ld++) {
+                        lDistance += response.routes[0].legs[ld].distance.value;
+                    }
+                    $("#distanceHidden").val(lDistance);
+                    $("#distance").text(lDistance + " metre");
+                    for (var i = 0; i < originAndDestMarkers.length; i++) {
+                        originAndDestMarkers[i].setMap(null);
+                    }
+
+                    makeMarker( document.getElementById('start').value, "http://wfarm4.dataknet.com/static/resources/icons/set4/c42fa105656.png", "Başlangıç", map, true);
+                    makeMarker( document.getElementById('end').value, "http://www.veryicon.com/icon/32/System/iOS7%20Minimal/Sports%20Finish%20flag.png", 'Bitiş', map, false);
+
+                    var coordinates = [];
+                    aPoint.lat = direction.routes[0].overview_path[0].lat();
+                    aPoint.lng = direction.routes[0].overview_path[0].lng();
+                    bPoint.lat = direction.routes[0].overview_path[direction.routes[0].overview_path.length - 1].lat();
+                    bPoint.lng = direction.routes[0].overview_path[direction.routes[0].overview_path.length - 1].lng();
+                    directionsDefault = [];
+
+                    for (var i = 0; i < direction.routes[0].overview_path.length; i++) {
+                        var first = {};
+                        var coordinate = {};
+                        first.lat = direction.routes[0].overview_path[i].lat();
+                        first.lng = direction.routes[0].overview_path[i].lng();
+
+                        coordinate.first = first;
+
+                        var second = {};
+
+                        if (i != direction.routes[0].overview_path.length - 1) {
+                            second.lat = direction.routes[0].overview_path[i + 1].lat();
+                            second.lng = direction.routes[0].overview_path[i + 1].lng();
+                            coordinate.second = second;
+
+                            coordinates.push(coordinate);
+                        }
+                    }
+                    var distances = [];
+                    for (var a = 0; a < coordinates.length; a++) {
+                        var p1 = LatLon(coordinates[a].first.lat, coordinates[a].first.lng);
+                        var p2 = LatLon(coordinates[a].second.lat, coordinates[a].second.lng);
+
+                        var dist = p1.distanceTo(p2);
+                        distances.push(dist);
+                    }
+
+                    for (var ds = 0; ds < dynamicStops.length; ds++) {
+                        var markers = [];
+                        var sum = 0;
+                        var beforeDistance = 0;
+                        var stopDistance = parseInt(document.getElementById(dynamicStops[ds].Name+ '_distance').value);
+                        var staticStopDistance = stopDistance;
+
+                        for (var dis = 0; dis < distances.length; dis++) {
+                            if (dis > 0) {
+                                beforeDistance = sum;
+                            }
+
+                            sum += distances[dis];
+                            var defaultMarkerLocation = {};
+                            var model = {};
+                            if (sum == stopDistance) {
+                                addDynamicStop(coordinates[dis].second.lat, coordinates[dis].second.lng, stopDistance, map, dynamicStops[ds]);
+                                stopDistance += staticStopDistance;
+
+                                defaultMarkerLocation = {
+                                    latitude: coordinates[dis].second.lat,
+                                    longitude: coordinates[dis].second.lng,
+                                    milestone: stopDistance
+                                };
+
+                                directionsDefault.push(defaultMarkerLocation);
+                            } else if (sum > stopDistance) {
+                                var latDistance = coordinates[dis].second.lat - coordinates[dis].first.lat;
+                                var lngDistance = coordinates[dis].second.lng - coordinates[dis].first.lng;
+
+                                var deltaDistance = stopDistance - beforeDistance;
+
+                                var xPoint = (deltaDistance / distances[dis] * latDistance) + coordinates[dis].first.lat;
+                                var yPoint = (deltaDistance / distances[dis] * lngDistance) + coordinates[dis].first.lng;
+
+                                defaultMarkerLocation = {
+                                    latitude: xPoint,
+                                    longitude: yPoint,
+                                    milestone: stopDistance
+                                };
+
+                                directionsDefault.push(defaultMarkerLocation);
+
+                                addDynamicStop(xPoint, yPoint, stopDistance, map, dynamicStops[ds]);
+
+                                model = {
+                                    lat: xPoint,
+                                    lng: yPoint
+                                };
+
+                                stopDistance += staticStopDistance;
+                            }
+                        }
+                    }
+
+                    $("#WCList").empty();
+
+                    for (var j = 0; j < directionsDefault.length; j++) {
+                        $('#WCList').append('<li><span class="tab">' + directionsDefault[j].latitude + "," + directionsDefault[j].longitude + ": " + directionsDefault[j].milestone + '</span></li>');
+                    }
+
+                    // +- uzaklık büyüdükçe büyüyecek bir sapma oluşuyor.
+                    if(response) {
+                        directionsDisplay.setDirections(response);
+                    }
+
+                }
+            } else {
+                window.alert('Directions request failed due to ' + status);
+            }
+        });
+    }
+
+
+
+    function preCalculateAndDisplayRoute(directionsService, directionsDisplay, map, eventObject) {
+        waypts = [];
+        if (eventObject.Waypoints!=null) {
+            for (var wpt = 0; wpt < eventObject.Waypoints.length; wpt++) {
+                waypts.push({
+                    location: eventObject.Waypoints[wpt].WaypointX + ', ' + eventObject.Waypoints[wpt].WaypointY,
+                    stopover: true
+                });
+            }
+        }
+
+        var start = eventObject.StartX + ', ' + eventObject.StartY;
+        var end = eventObject.EndX + ', ' + eventObject.EndY;
+        directionsService.route({
+            origin: start,
+            destination: end,
+            waypoints: waypts,
+            travelMode: google.maps.TravelMode.DRIVING
+        }, function (response, status) {
+            if (status === google.maps.DirectionsStatus.OK) {
+                responseGlobal = response;
+                removeMarkers();
+                for (var stp = 0; stp < eventObject.Stops.length; stp++) {
+                    addStopFromJson(eventObject.Stops[stp], map);
+                }
+                makeMarker( start, "http://wfarm4.dataknet.com/static/resources/icons/set4/c42fa105656.png", "Başlangıç", map, true);
+                makeMarker( end, "http://www.veryicon.com/icon/32/System/iOS7%20Minimal/Sports%20Finish%20flag.png", 'Bitiş', map, false);
+
+                //for (var j = 0; j < directionsDefault.length; j++) {
+                //    $('#WCList').append('<li><span class="tab">' + directionsDefault[j].latitude + "," + directionsDefault[j].longitude + ": " + directionsDefault[j].milestone + '</span></li>');
+                //}
+
+                // +- uzaklık büyüdükçe büyüyecek bir sapma oluşuyor.
+                if(response) {
+                    directionsDisplay.setDirections(response);
+                    responseGlobal = response;
+                }
+
+                localStorage.setItem("mapItem", map.__gm.Ea.innerHTML);
+
+
+            } else {
+                window.alert('Directions request failed due to ' + status);
+            }
+        });
+    }
+
+    function removeMarkers() {
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(null);
+        }
+
+        markers = [];
+    }
+
+    function CenterControl(controlDiv, map, eventName) {
+        var controlUI = document.createElement('div');
+        controlUI.style.backgroundColor = '#fff';
+        controlUI.style.border = '2px solid #fff';
+        controlUI.style.borderRadius = '3px';
+        controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+        controlUI.style.marginBottom = '22px';
+        controlUI.style.textAlign = 'center';
+        controlDiv.appendChild(controlUI);
+
+        var controlText = document.createElement('div');
+        controlText.style.color = 'rgb(25,25,25)';
+        controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+        controlText.style.fontSize = '16px';
+        controlText.style.lineHeight = '38px';
+        controlText.style.paddingLeft = '5px';
+        controlText.style.paddingRight = '5px';
+        controlText.innerHTML = eventName;
+        controlUI.appendChild(controlText);
+    }
+
+    function makeMarker(position, icon, title, map, startOrEnd) {
+        var geocoder = new google.maps.Geocoder;
+        var pos = position.split(", ");
+        var positionModel = new google.maps.LatLng(pos[0], pos[1]);
+        var marker = new google.maps.Marker({
+            position: positionModel,
+            icon: icon,
+            title: title,
+            draggable: false
+        });
+
+        marker.setMap(map);
+
+        marker.addListener('dragend', function (event) {
+            var latlng = {lat: parseFloat(this.position.lat()), lng: parseFloat(this.position.lng())};
+
+            if (startOrEnd) {
+                $('#start').val(this.position.lat() + ", " + this.position.lng());
+
+                geocoder.geocode({'location': latlng}, function(results, status) {
+                    if (status === google.maps.GeocoderStatus.OK) {
+                        if (results[0]) {
+                            $('#startName').val(results[0].formatted_address);
+                        }
+                    } else {
+                        window.alert('Geocoder failed due to: ' + status);
+                    }
+                });
+            } else {
+                $('#end').val(this.position.lat() + ", " + this.position.lng());
+
+                geocoder.geocode({'location': latlng}, function(results, status) {
+                    if (status === google.maps.GeocoderStatus.OK) {
+                        if (results[0]) {
+                            $('#endName').val(results[0].formatted_address);
+                        }
+                    } else {
+                        window.alert('Geocoder failed due to: ' + status);
+                    }
+                });
+            }
+        });
+
+        originAndDestMarkers.push(marker);
+    }
+
+    function removeWaypoints() {
+        routeWaypts = [];
+        wayPoints = [];
+        $("#waypointsCount").text("");
+    }
+
+
+
+
+</script>

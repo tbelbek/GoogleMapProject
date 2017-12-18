@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ARA DURAK</title>
+
+    <link href="~/Content/reset.css" rel="stylesheet" />
+    @*@Styles.Render("~/Content/css")*@
+    @*@Scripts.Render("~/bundles/modernizr")*@
+    <!-- Bootstrap -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <!-- Css -->
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/chck.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <div class="logo-wrp">
+                <img src="~/images/logo2.png" alt="logo">
+            </div>
+            <ul class="sidebar-nav">
+                <li id="Home">
+                    <i class="fa fa-home fa-2x"></i>
+
+                    <a href="~/Home/Index" onclick="changeToActive(1)">Ana Sayfa</a>
+
+                </li>
+                <li id="AddEvent">
+                    <i class="fa fa-calendar-plus-o fa-2x"></i>
+
+                    <a href="~/Home/CreateEventView" onclick="changeToActive(2)">Yeni Etkinlik</a>
+                </li>
+                <li id="AllEvents">
+                    <i class="fa fa-list-alt fa-2x"></i>
+                    <a href="~/Home/ListEventView" onclick="changeToActive(3)">Etkinlikler</a>
+                </li>
+                <li id="AllStops">
+                    <i class="fa fa-bus fa-2x"></i>
+                    <a href="~/Home/ListStopView" onclick="changeToActive(4)">İstasyonlar</a>
+                </li>
+            </ul>
+        </div>
+        <div id="page-content-wrapper">
+            @RenderBody()
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script>
+        function changeToActive(pageNumber) {
+            switch (pageNumber) {
+                case 1:
+                    $("#Home").addClass("active");
+                    $("#AddEvent").removeClass("active");
+                    $("#AllEvents").removeClass("active");
+                    $("#AllStops").removeClass("active");
+                    break;
+                case 2:
+                    $("#AddEvent").addClass("active");
+                    $("#Home").removeClass("active");
+                    $("#AllEvents").removeClass("active");
+                    $("#AllStops").removeClass("active");
+                    break;
+                case 3:
+                    $("#AllEvents").addClass("active");
+                    $("#Home").removeClass("active");
+                    $("#AddEvent").removeClass("active");
+                    $("#AllStops").removeClass("active");
+                    break;
+                case 4:
+                    $("#AllStops").addClass("active");
+                    $("#AllEvents").removeClass("active");
+                    $("#Home").removeClass("active");
+                    $("#AddEvent").removeClass("active");
+                    break;
+                default:
+                    $("#Home").addClass("active");
+                    $("#AddEvent").removeClass("active");
+                    $("#AllEvents").removeClass("active");
+                    $("#AllStops").removeClass("active");
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

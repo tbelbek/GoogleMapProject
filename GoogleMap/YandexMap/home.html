@@ -1,0 +1,470 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Waypoints in directions</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            float: left;
+            width: 60%;
+            height: 100%;
+        }
+
+        #right-panel {
+            font-family: 'Roboto','sans-serif';
+            line-height: 30px;
+            padding-left: 10px;
+        }
+
+            #right-panel select, #right-panel input {
+                font-size: 15px;
+            }
+
+            #right-panel select {
+                width: 100%;
+            }
+
+            #right-panel i {
+                font-size: 12px;
+            }
+
+        #right-panel {
+            margin: 20px;
+            border-width: 2px;
+            width: 30%;
+            float: left;
+            text-align: left;
+            padding-top: 20px;
+        }
+
+        #directions-panel {
+            margin-top: 20px;
+            background-color: #FFEE77;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <div id="right-panel">
+        <div>
+            <b>Başlangıç</b>
+            <input type="text" id="start" value="tuzla, istanbul" />
+            <br />
+
+            <b>Bitiş</b>
+            <input type="text" id="end" value="kartal, istanbul"/>
+            <br />
+            <input type="radio" name="chooseLocation" value="start"> Baslangic Noktasını Seç
+            <br />
+            <input type="radio" name="chooseLocation" value="end"> Bitis Noktasını Seç
+            <br />
+            <input type="radio" name="chooseLocation" value="empty" id="empty" checked> Boş
+            <br>
+            Her <input type="text" id="pointDistance" value="1000" /> mt bir tuvalet olsun
+            <br />
+            Her <input type="text" id="pointDistanceWater" value="3400" /> mt bir su olsun
+            <br />
+            <label id="distance"></label>
+            <br />
+            <input type="submit" id="submit">
+        </div>
+        <div id="waypoints">
+            <ul id="waterList"></ul>
+            <ul id="WCList"></ul>
+        </div>
+    </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxiKzM-pTcrZncz3E4am4tOtWTv2b4mV8&signed_in=true&callback=initMap"
+            async defer></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="scripts/latlon-spherical.js"></script>
+    <script src="scripts/dms.js"></script>
+    <script>
+        var map;
+        var directionsDefault = [];
+        var directionsDefaultWater = [];
+        var routeWaypts = [];
+        var wayptsWater = [];
+        var waypts = [];
+        function initMap() {
+            var directionsService = new google.maps.DirectionsService;
+            var directionsDisplay = new google.maps.DirectionsRenderer({ draggable: true });
+            var map = new google.maps.Map(document.getElementById('map'), {
+            });
+
+            directionsDisplay.setMap(map);
+
+            var aPoint = {};
+            var bPoint = {};
+
+            document.getElementById('submit').addEventListener('click', function () {
+                map = new google.maps.Map(document.getElementById('map'), {
+                });
+                directionsDisplay.setMap(map);
+                calculateAndDisplayRoute(directionsService, directionsDisplay, map);
+               
+                var direction = directionsDisplay.getDirections();
+
+                if (direction != null) {
+                    
+                    $("#distance").text(direction.routes[0].legs[0].distance.value + " Metre");
+                    var coordinates = [];
+                    aPoint.lat = direction.routes[0].overview_path[0].lat();
+                    aPoint.lng = direction.routes[0].overview_path[0].lng();
+                    bPoint.lat = direction.routes[0].overview_path[direction.routes[0].overview_path.length - 1].lat();
+                    bPoint.lng = direction.routes[0].overview_path[direction.routes[0].overview_path.length - 1].lng();
+
+                    for (var i = 0; i < direction.routes[0].overview_path.length; i++) {
+                        var first = {};
+                        var coordinate = {};
+                        first.lat = direction.routes[0].overview_path[i].lat();
+                        first.lng = direction.routes[0].overview_path[i].lng();
+
+                        coordinate.first = first;
+
+                        var second = {};
+
+                        if (i != direction.routes[0].overview_path.length - 1) {
+                            second.lat = direction.routes[0].overview_path[i + 1].lat();
+                            second.lng = direction.routes[0].overview_path[i + 1].lng();
+                            coordinate.second = second;
+
+                            coordinates.push(coordinate);
+                        }
+                    }
+                    var distances = [];
+                    for (var a = 0; a < coordinates.length; a++) {
+                        var p1 = LatLon(coordinates[a].first.lat, coordinates[a].first.lng);
+                        var p2 = LatLon(coordinates[a].second.lat, coordinates[a].second.lng);
+
+                        var dist = p1.distanceTo(p2);
+                        distances.push(dist);
+
+                    }
+
+                    var toiletMarkers = [];
+                    sum = 0;
+                    var beforeDistance = 0;
+                    var waypointDistance = parseInt(document.getElementById('pointDistance').value);
+                    var staticWaypointDistance = waypointDistance;
+                    for (var b = 0; b < distances.length; b++) {
+                        if (b > 0) {
+                            beforeDistance = sum;
+                        }
+
+                        sum += distances[b];
+
+                        if (sum == waypointDistance) {
+                            // secondın kordinatlarını ver
+
+                            addWayPoint(coordinates[b].second.lat, coordinates[b].second.lng, waypointDistance, map);
+                            waypointDistance += staticWaypointDistance;
+                            toiletMarkers.push(coordinates[b].second);
+                            var defaultMarkerLocation = {
+                                latitude: xPoint,
+                                longitude: yPoint,
+                                milestone: waypointDistance
+                            };
+
+                            directionsDefault.push(defaultMarkerLocation);
+                        } else if (sum > waypointDistance) {
+                            var latDistance = coordinates[b].second.lat - coordinates[b].first.lat;
+                            var lngDistance = coordinates[b].second.lng - coordinates[b].first.lng;
+
+                            var deltaDistance = waypointDistance - beforeDistance;
+
+                            var xPoint = (deltaDistance / distances[b] * latDistance) + coordinates[b].first.lat;
+                            var yPoint = (deltaDistance / distances[b] * lngDistance) + coordinates[b].first.lng;
+
+                            var defaultMarkerLocation = {
+                                latitude: xPoint,
+                                longitude: yPoint,
+                                milestone: waypointDistance
+                            };
+
+                            directionsDefault.push(defaultMarkerLocation);
+
+                            addWayPoint(xPoint, yPoint, waypointDistance, map);
+
+                            var model = {
+                                lat: xPoint,
+                                lng: yPoint
+                            };
+
+                            toiletMarkers.push(model);
+
+                            waypointDistance += staticWaypointDistance;
+                        }
+                       
+                    }
+
+                    sum = 0;
+                    var beforeDistanceWater = 0;
+                    var waypointDistanceWater = parseInt(document.getElementById('pointDistanceWater').value);
+                    var staticWaypointDistanceWater = waypointDistanceWater;
+                    for (var c = 0; c < distances.length; c++) {
+                        if (c > 0) {
+                            beforeDistanceWater = sum;
+                        }
+
+                        sum += distances[c];
+
+                        if (sum == waypointDistanceWater) {
+                            // secondın kordinatlarını ver
+                            var isHasPoint = false;
+                            var defaultMarkerLocation = {
+                                milestone: waypointDistanceWater
+                            };
+                            for (var x = 0; x < toiletMarkers.length; x++) {
+                                if (toiletMarkers[x].lat == coordinates[c].second.lat && toiletMarkers[x].lng == coordinates[c].second.lng) {
+                                    addWayPointWater(coordinates[c].second.lat + 0.0002, coordinates[c].second.lng + 0.0001, waypointDistanceWater, map);
+                                    isHasPoint = true;
+                                    defaultMarkerLocation.latitude = coordinates[c].second.lat + 0.0002;
+                                    defaultMarkerLocation.longitude = coordinates[c].second.lng + 0.0001;
+                                }
+                            }
+                            if (!isHasPoint) {
+                                addWayPointWater(coordinates[c].second.lat, coordinates[c].second.lng, waypointDistanceWater, map);
+                                defaultMarkerLocation.latitude = coordinates[c].second.lat;
+                                defaultMarkerLocation.longitude = coordinates[c].second.lng;
+                            }
+
+                            directionsDefaultWater.push(defaultMarkerLocation);
+                            waypointDistanceWater += staticWaypointDistanceWater;
+
+                        } else if (sum > waypointDistanceWater) {
+                            var latDistance = coordinates[c].second.lat - coordinates[c].first.lat;
+                            var lngDistance = coordinates[c].second.lng - coordinates[c].first.lng;
+
+                            var deltaDistance = waypointDistanceWater - beforeDistanceWater;
+
+                            var xPoint = (deltaDistance / distances[c] * latDistance) + coordinates[c].first.lat;
+                            var yPoint = (deltaDistance / distances[c] * lngDistance) + coordinates[c].first.lng;
+
+                            var isHasPoint = false;
+                            var defaultMarkerLocation = {
+                                milestone: waypointDistanceWater
+                            };
+
+                            for (var v = 0; v < toiletMarkers.length; v++) {
+                                if (toiletMarkers[v].lat == xPoint && toiletMarkers[v].lng == yPoint) {
+                                    addWayPointWater(xPoint + 0.0002, yPoint + 0.0001, waypointDistanceWater, map);
+                                    isHasPoint = true;
+                                    defaultMarkerLocation.latitude = xPoint + 0.0002;
+                                    defaultMarkerLocation.longitude = yPoint + 0.0001;
+                                }
+                            }
+
+                            if (!isHasPoint) {
+                                defaultMarkerLocation.latitude = xPoint;
+                                defaultMarkerLocation.longitude = yPoint;
+                                addWayPointWater(xPoint, yPoint, waypointDistanceWater, map);
+                            }
+
+                            directionsDefaultWater.push(defaultMarkerLocation);
+
+                            waypointDistanceWater += staticWaypointDistanceWater;
+                        }
+                    }
+
+                    for (var n = 0; n < directionsDefaultWater.length; n++) {
+                        $('#waterList').append('<li><span class="tab">' + directionsDefaultWater[n].latitude + "," + directionsDefaultWater[n].longitude + ": " + directionsDefaultWater[n].milestone + '</span></li>');
+                    }
+
+                    for (var j = 0; j < directionsDefault.length; j++) {
+                        $('#WCList').append('<li><span class="tab">' + directionsDefault[j].latitude + "," + directionsDefault[j].longitude + ": " + directionsDefault[j].milestone + '</span></li>');
+                    }
+                   
+                    // +- uzaklık büyüdükçe 2mt büyüyecek bir sapma oluşuyor.
+                }
+
+                google.maps.event.addListener(map, 'click', function (event) {
+                    var radioButton = $('input[name="chooseLocation"]:checked').val();
+                    if (radioButton === "start") {
+                        document.getElementById('start').value = event.latLng.lat() + ", " + event.latLng.lng();
+                        $('#empty')[0].checked = true;
+                    } else if (radioButton === "end") {
+                        document.getElementById('end').value = event.latLng.lat() + ", " + event.latLng.lng();
+                        $('#empty')[0].checked = true;
+                    }
+                });
+
+                directionsDisplay.addListener('directions_changed', function () {
+                    setDirections(directionsDisplay.getDirections(), aPoint, bPoint);
+                });
+
+                
+
+                
+                
+                //marker.addListener('dragend', function (event) {
+                //routeWaypts.push({
+                //    location: checkboxArray[i].value,
+                //    stopover: true
+                //});
+                //});
+
+                return false;
+            });
+        }
+
+        function setDirections(result, aPoint, bPoint) {
+
+            if (!(result.routes[0].overview_path[0].lat() == aPoint.lat && result.routes[0].overview_path[0].lng() == aPoint.lng)) {
+                document.getElementById('start').value = result.routes[0].overview_path[0].lat() + ", " + result.routes[0].overview_path[0].lng();
+            }
+
+            if (!(result.routes[0].overview_path[result.routes[0].overview_path.length - 1].lat() == bPoint.lat && result.routes[0].overview_path[result.routes[0].overview_path.length - 1].lng() == bPoint.lng)) {
+                document.getElementById('end').value = result.routes[0].overview_path[result.routes[0].overview_path.length - 1].lat() + ", " + result.routes[0].overview_path[result.routes[0].overview_path.length - 1].lng();
+            }
+
+            if ((result.routes[0].overview_path[0].lat() == aPoint.lat && result.routes[0].overview_path[0].lng() == aPoint.lng) && (result.routes[0].overview_path[result.routes[0].overview_path.length - 1].lat() == bPoint.lat && result.routes[0].overview_path[result.routes[0].overview_path.length - 1].lng() == bPoint.lng) && result.routes[0].legs[0].via_waypoints.length > 0) {
+                for (var m = 0; m < result.routes[0].legs[0].via_waypoints.length; m++) {
+                    routeWaypts.push({
+                        location: result.routes[0].legs[0].via_waypoints[m].lat() + ", " + result.routes[0].legs[0].via_waypoints[m].lng(),
+                        stopover: true
+                    });
+                }
+            }
+
+            $("#distance").text(result.routes[0].legs[0].distance.value + " Metre");
+        }
+
+        function addWayPoint(lat, lng, waypointDistance, map) {
+            var positionModel = new google.maps.LatLng(lat, lng);
+
+            var marker = new google.maps.Marker({
+                position: positionModel,
+                title: waypointDistance + "",
+                draggable: true,
+                icon: 'http://maps.gstatic.com/mapfiles/ridefinder-images/mm_20_red.png'
+            });
+
+            marker.setMap(map);
+
+            waypts = [];
+            waypt = {};
+
+            marker.addListener('dragstart', function (event) {
+                waypt.latBefore = this.position.lat();
+                waypt.lngBefore = this.position.lng();
+                waypt.milestone = this.title;
+                waypts.push(waypt);
+            });
+            //markerların sürükleme sonrası lokasyonları ve ana marker listesinin güncellenmesi. console.loglar 2 marker arasındaki farkı göstermektedir.
+            marker.addListener('dragend', function (event) {
+                waypt.latAfter = this.position.lat();
+                waypt.lngAfter = this.position.lng();
+                for (var l = 0, len = directionsDefault.length; l < len; l++) {
+                    if (directionsDefault[l].milestone == waypt.milestone) {
+                        console.log(directionsDefault[l]);
+                        directionsDefault[l].latitude = waypt.latAfter;
+                        directionsDefault[l].longitude = waypt.lngAfter;
+                        console.log(directionsDefault[l]);
+                    }
+                    // Return as soon as the object is found
+                }
+                waypts.push(waypt);
+            });
+
+        }
+
+        function addWayPointWater(lat, lng, waypointDistance, map) {
+            var positionModel = new google.maps.LatLng(lat, lng);
+
+            var marker = new google.maps.Marker({
+                position: positionModel,
+                title: waypointDistance + "",
+                draggable: true,
+                icon: 'http://maps.gstatic.com/mapfiles/ridefinder-images/mm_20_blue.png'
+            });
+
+            marker.setMap(map);
+
+            wayptsWater = [];
+            waypt = {};
+
+            marker.addListener('dragstart', function (event) {
+                waypt.latBefore = this.position.lat();
+                waypt.lngBefore = this.position.lng();
+                waypt.milestone = this.title;
+                waypts.push(waypt);
+            });
+
+            //markerların sürükleme sonrası lokasyonları ve ana marker listesinin güncellenmesi. console.loglar 2 marker arasındaki farkı göstermektedir.
+            marker.addListener('dragend', function (event) {
+                waypt.latAfter = this.position.lat();
+                waypt.lngAfter = this.position.lng();
+                for (var u = 0, len = directionsDefaultWater.length; u < len; u++) {
+                    if (directionsDefaultWater[u].milestone == waypt.milestone) {
+                        console.log(directionsDefaultWater[u]);
+                        directionsDefaultWater[u].latitude = waypt.latAfter;
+                        directionsDefaultWater[u].longitude = waypt.lngAfter;
+                        console.log(directionsDefaultWater[u]);
+                    }
+                    // Return as soon as the object is found
+                }
+                waypts.push(waypt);
+            });
+
+
+        }
+
+        // Rota Belirlemece
+        function calculateAndDisplayRoute(directionsService, directionsDisplay, map) {
+            //var waypts = [];
+            //var checkboxArray = document.getElementById('waypoints');
+            //for (var i = 0; i < checkboxArray.length; i++) {
+            //    if (checkboxArray.options[i].selected) {
+            //        waypts.push({
+            //            location: checkboxArray[i].value,
+            //            stopover: true
+            //        });
+            //    }
+            //}
+
+            directionsService.route({
+                origin: document.getElementById('start').value,
+                destination: document.getElementById('end').value,
+                waypoints: routeWaypts,
+                travelMode: google.maps.TravelMode.WALKING
+            }, function (response, status) {
+                if (status === google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                    //var route = response.routes[0];
+                    //var summaryPanel = document.getElementById('directions-panel');
+                    //summaryPanel.innerHTML = '';
+                    //// For each route, display summary information.
+                    //for (var i = 0; i < route.legs.length; i++) {
+                    //    var routeSegment = i + 1;
+                    //    summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
+                    //        '</b><br>';
+                    //    summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
+                    //    summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
+                    //    summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
+                    //}
+
+                    for (var i = 0, len = response.routes.length; i < len; i++) {
+                        new google.maps.DirectionsRenderer({
+                            map: map,
+                            directions: response,
+                            routeIndex: i
+                        });
+                    }
+                } else {
+                    window.alert('Directions request failed due to ' + status);
+                }
+            });
+        }
+
+    </script>
+
+</body>
+</html>

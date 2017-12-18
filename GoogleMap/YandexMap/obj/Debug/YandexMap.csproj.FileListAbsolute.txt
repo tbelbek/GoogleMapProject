@@ -1,0 +1,165 @@
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\ApplicationInsights.config
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\roslyn\csc.exe
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\roslyn\Microsoft.CodeAnalysis.dll
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\roslyn\Microsoft.CSharp.Core.targets
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\roslyn\Microsoft.VisualBasic.Core.targets
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\roslyn\System.Collections.Immutable.dll
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\roslyn\System.Reflection.Metadata.dll
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\roslyn\vbc.exe
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\roslyn\VBCSCompiler.exe
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\roslyn\VBCSCompiler.exe.config
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\YandexMap.dll.config
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\YandexMap.dll
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\YandexMap.pdb
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\Microsoft.AI.Agent.Intercept.dll
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\Microsoft.AI.DependencyCollector.dll
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\Microsoft.AI.PerfCounterCollector.dll
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\Microsoft.AI.ServerTelemetryChannel.dll
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\Microsoft.AI.Web.dll
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\Microsoft.AI.WindowsServer.dll
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\Microsoft.ApplicationInsights.dll
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\Microsoft.AI.DependencyCollector.xml
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\Microsoft.AI.ServerTelemetryChannel.xml
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\Microsoft.AI.Web.xml
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\Microsoft.AI.WindowsServer.xml
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\Microsoft.ApplicationInsights.xml
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\obj\Debug\YandexMap.csprojResolveAssemblyReference.cache
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\obj\Debug\YandexMap.dll
+c:\users\ui\documents\visual studio 2015\Projects\YandexMap\YandexMap\obj\Debug\YandexMap.pdb
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\ApplicationInsights.config
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\roslyn\csc.exe
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\roslyn\vbc.exe
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\roslyn\VBCSCompiler.exe
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\YandexMap.dll.config
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\YandexMap.dll
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\YandexMap.pdb
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\Microsoft.AI.Web.dll
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\Microsoft.ApplicationInsights.dll
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\Microsoft.AI.Web.xml
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\Microsoft.ApplicationInsights.xml
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\obj\Debug\YandexMap.csprojResolveAssemblyReference.cache
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\obj\Debug\YandexMap.dll
+C:\Users\eren.gunes\Desktop\YandexMap\YandexMap\obj\Debug\YandexMap.pdb
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\ApplicationInsights.config
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\roslyn\csc.exe
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\roslyn\vbc.exe
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\roslyn\VBCSCompiler.exe
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\YandexMap.dll.config
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\YandexMap.dll
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\YandexMap.pdb
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\Microsoft.AI.Web.dll
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\Microsoft.AI.Web.xml
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\obj\Debug\YandexMap.csprojResolveAssemblyReference.cache
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\obj\Debug\YandexMap.dll
+C:\Users\Tuğhan\Desktop\YandexMap\YandexMap\obj\Debug\YandexMap.pdb
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\ApplicationInsights.config
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\roslyn\csc.exe
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\roslyn\vbc.exe
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\roslyn\VBCSCompiler.exe
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\YandexMap.dll.config
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\YandexMap.dll
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\YandexMap.pdb
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\Microsoft.AI.Web.dll
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\Microsoft.ApplicationInsights.dll
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\Microsoft.AI.Web.xml
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\Microsoft.ApplicationInsights.xml
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\obj\Debug\YandexMap.csprojResolveAssemblyReference.cache
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\obj\Debug\YandexMap.dll
+C:\Users\eren.gunes\Desktop\GoogleMap\YandexMap\obj\Debug\YandexMap.pdb
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\ApplicationInsights.config
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\roslyn\csc.exe
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\roslyn\vbc.exe
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\roslyn\VBCSCompiler.exe
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\YandexMap.dll.config
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\YandexMap.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\YandexMap.pdb
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\Microsoft.AI.Web.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\Microsoft.AI.Web.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\obj\Debug\YandexMap.csprojResolveAssemblyReference.cache
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\obj\Debug\YandexMap.dll
+C:\Users\Tuğhan\Desktop\GoogleMap\GoogleMap\YandexMap\obj\Debug\YandexMap.pdb

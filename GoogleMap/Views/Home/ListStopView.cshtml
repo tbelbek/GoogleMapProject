@@ -1,0 +1,98 @@
+﻿@model IEnumerable<GoogleMap.Models.StopListViewModel>
+
+@{
+    ViewBag.Title = "ListStopView";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="content">
+                    <h2 class="content-title">İstasyonlar</h2>
+                    <br>
+                    <a href="/Home/CreateStopView" class="btn btn-success main-button">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <b> Yeni İstasyon Oluştur</b>
+                    </a>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordred table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Type)
+                                    </th>
+                                    <th>
+                                        <span class="align-center">@Html.DisplayNameFor(model => model.IconUrl)</span>
+                                    </th>
+                                    <th>
+                                        <span class="align-center">Durağı Düzenle</span>
+                                    </th>
+                                    <th align="center">
+                                        <span class="align-center">Durağı Sil</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Type)
+                                        </td>
+                                        <td align="center">
+                                            <img src="@item.IconUrl">
+                                        </td>
+                                        <td align="center">
+                                            @Html.ActionLink(" ", "EditStopView", new { id = item.Id }, new { @class = "glyphicon glyphicon-pencil btn btn-primary", @style = "height:33px;" })
+                                        </td>
+                                        <td align="center">
+                                            <button class="btn btn-danger" data-title="Delete" data-toggle="modal" data-target="#delete" data-placement="top" rel="tooltip" style="height:33px;" onclick="removeStop(@item.Id)"><span class="glyphicon glyphicon-trash"></span></button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    <h4 class="modal-title custom_align" id="Heading">Durak Siliniyor</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="alert alert-warning"><span class="glyphicon glyphicon-warning-sign"></span> Seçmiş olduğunuz durak silinecektir. Onaylıyor musunuz?</div>
+                                </div>
+                                <div class="modal-footer ">
+                                    <a class="btn btn-danger" href="" style="height:33px;" id="modalDeleteButton"><span class="glyphicon glyphicon-trash"></span> Sil</a>
+
+                                    <button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-remove"></span> Geri Dön</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+    $("#AllStops").addClass("active");
+
+    function removeStop(id) {
+        $("#modalDeleteButton").attr("href", " /Home/DeleteStopView/" + id);
+    }
+</script>

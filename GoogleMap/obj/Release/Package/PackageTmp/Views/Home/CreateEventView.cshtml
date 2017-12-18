@@ -1,0 +1,39 @@
+﻿@model GoogleMap.Models.EventCreateViewModel
+
+@{
+    ViewBag.Title = "CreateEventView";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="content">
+                    <h2 class="content-title">Etkinlik Oluşturma</h2>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-horizontal">
+                            <div align="center">
+                                <div class="form-group col-md-6">
+                                    <br>
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-addon">Etkinlik Adı</span>
+                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Avrasya Maratonu" } })
+                                    </div>
+                                    <br>
+                                    <button type="submit" class="btn btn-success btn-lg create-btn">
+                                        <span class="glyphicon glyphicon-ok"> </span>
+                                        <span> Kaydet ve Liste Sayfasına Dön</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>$("#AddEvent").addClass("active");</script>
